@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Triton | Администрирование
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="row mt-4">
+            <h1>Продукты</h1>
+            <div class="col mt-2">
+                <a href="{% url 'shop:admin-products-create' %}" class="btn btn-primary col-12 col-sm-5 col-lg-3 col-xl-2 mb-2">Добавить
+                    <i
+                            class="fa-solid fa-plus"></i></a>
+                <a href="#" class="btn btn-primary col-12 col-sm-5 col-lg-3 col-xl-2 mb-2">Загрузить из Excel <i
+                        class="fa-solid fa-table"></i></a>
+
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="col-1">ID</th>
+                            <th class="col-2">Название</th>
+                            <th class="col-2">Категория</th>
+                            <th class="col-1">Цена</th>
+                            <th class="col-2">URL</th>
+                            <th class="col-2">Описание</th>
+                            <th class="col-2">Действие</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for object in object_list %}
+                            <tr>
+                                <td>{{ object.pk }}</td>
+                                <td>{{ object.name }}</td>
+                                <td>{{ object.category }}</td>
+                                <td>{{ object.price }}</td>
+                                <td>{{ object.slug }}</td>
+                                <td>{{ object.description|truncatechars:50 }}</td>
+                                <td>
+                                    <a href="{% url 'shop:admin-products-detail' object.pk %}"
+                                       class="btn btn-primary mb-1">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <a href="{% url 'shop:admin-products-update' object.pk %}"
+                                       class="btn btn-primary mb-1">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                    <a href="{% url 'shop:admin-products-delete' object.pk %}"
+                                       class="btn btn-danger mb-1">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% include 'includes/pagination.html' %}
+            </div>
+            <div class="col text-end">
+                <p>Всего : {{ products_count }}</p>
+            </div>
+
+
+        </div>
+
+        {% include 'includes/admin_offcanvas.html' %}
+
+    </div>
+{% endblock %}

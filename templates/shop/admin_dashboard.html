@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Triton | Администрирование
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                aria-controls="offcanvasExample">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="row">
+            <h1 class="mb-4 mt-4">Панель управления <i class="fa-solid fa-user-tie"></i></h1>
+            <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Акции</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Категории</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Подкатегории</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1 class="mb-4 mt-4">Метрики <i class="fa-solid fa-chart-simple"></i></h1>
+            <div class="col-12 col-sm-6 col-lg-6 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Посещаемость</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Популярные товары</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-12 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Отказы</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1 class="mb-4 mt-4">Общая статистика <i class="fa-solid fa-stethoscope"></i></h1>
+            <div class="col-12 col-sm-6 col-lg-6 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h2>Уникальных клиентов</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-6 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h2>Уникальный товаров</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-12 mb-4">
+                <div class="card card__stat">
+                    <div class="card-body text-center">
+                        <h1>Категорий</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'includes/admin_offcanvas.html' %}
+
+    </div>
+{% endblock %}

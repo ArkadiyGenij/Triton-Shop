@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Triton | {{ product.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4 justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>{{ product.name }}</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 text-center mb-4">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                                         class="img-fluid rounded" style="max-height: 300px;">
+                                {% else %}
+                                    <div class="bg-light rounded d-flex align-items-center justify-content-center"
+                                         style="height: 300px;">
+                                        <span class="text-muted">Изображение отсутствует</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Категория:</strong> {{ product.category }}</p>
+                                <p><strong>Цена:</strong> {{ product.price }} руб.</p>
+                                <p><strong>URL:</strong> {{ product.slug }}</p>
+                                <hr>
+                                <h5>Описание:</h5>
+                                <p>{{ product.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'shop:admin-products' %}" class="btn btn-primary">
+                                <i class="fa-solid fa-arrow-left"></i> Вернуться к списку
+                            </a>
+                            <div>
+                                <a href="{% url 'shop:admin-products-update' product.pk %}" class="btn btn-warning">
+                                    <i class="fa-solid fa-pencil"></i> Редактировать
+                                </a>
+                                <a href="{% url 'shop:admin-products-delete' product.pk %}" class="btn btn-danger ms-2">
+                                    <i class="fa-solid fa-trash-can"></i> Удалить
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
